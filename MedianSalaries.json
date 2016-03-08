@@ -1,0 +1,62 @@
+[
+  {
+    "Major": "CS",
+    "Year": 2011,
+    "Median": 84900
+  },
+  {
+    "Major": "CS",
+    "Year": 2012,
+    "Median": 91000
+  },
+  {
+    "Major": "CS",
+    "Year": 2013,
+    "Median": 100000
+  },
+  {
+    "Major": "CS",
+    "Year": 2014,
+    "Median": 100000
+  },
+  {
+    "Major": "AEM",
+    "Year": 2011,
+    "Median": 60000
+  },
+  {
+    "Major": "AEM",
+    "Year": 2012,
+    "Median": 60000
+  },
+  {
+    "Major": "AEM",
+    "Year": 2013,
+    "Median": 65000
+  },
+  {
+    "Major": "AEM",
+    "Year": 2014,
+    "Median": 65000
+  },
+  {
+    "Major": "AS",
+    "Year": 2011,
+    "Median": 36000
+  },
+  {
+    "Major": "AS",
+    "Year": 2012,
+    "Median": 34980
+  },
+  {
+    "Major": "AS",
+    "Year": 2013,
+    "Median": 40000
+  },
+  {
+    "Major": "AS",
+    "Year": 2014,
+    "Median": 42250
+  }
+]

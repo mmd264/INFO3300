@@ -1,0 +1,1073 @@
+[
+  {
+    "Employer": "Amazon.com",
+    "Title": "Software Development Engineer",
+    "City": "Seattle",
+    "State": "WA",
+    "Year": 2011,
+    "latitude": 47.603832,
+    "longitude": -122.330062
+  },
+  {
+    "Employer": "Amazon.com",
+    "Title": "Software Engineer",
+    "City": "Herndon",
+    "State": "VA",
+    "Year": 2011,
+    "latitude": 38.969532,
+    "longitude": -77.385948
+  },
+  {
+    "Employer": "Apple",
+    "Title": "Software Engineer",
+    "City": "Cupertino",
+    "State": "CA",
+    "Year": 2011,
+    "latitude": 37.323011,
+    "longitude": -122.032252
+  },
+  {
+    "Employer": "Bank of America Merrill Lynch",
+    "Title": "Technology Analyst",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2011,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Barclays Capital",
+    "Title": "Technology Analyst",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2011,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Bloomberg",
+    "Title": "Financial Software Developer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2011,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Capital IQ",
+    "Title": "Not Reported",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2011,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Citigroup",
+    "Title": "Quantitative Trading Analyst",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2011,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Citigroup",
+    "Title": "Technology Analyst",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2011,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Facebook",
+    "Title": "Software Engineer Intern",
+    "City": "Menlo Park",
+    "State": "CA",
+    "Year": 2011,
+    "latitude": 37.453827,
+    "longitude": -122.182187
+  },
+  {
+    "Employer": "Google",
+    "Title": "Software Engineer (3)",
+    "City": "Mountain View",
+    "State": "CA",
+    "Year": 2011,
+    "latitude": 37.385575,
+    "longitude": -122.08205
+  },
+  {
+    "Employer": "Hulu",
+    "Title": "Software Developer",
+    "City": "Los Angeles",
+    "State": "CA",
+    "Year": 2011,
+    "latitude": 34.054394,
+    "longitude": -118.243941
+  },
+  {
+    "Employer": "Tyler Technologies",
+    "Title": "Software Developer",
+    "City": "Lakewood",
+    "State": "CO",
+    "Year": 2011,
+    "latitude": 39.624609,
+    "longitude": -105.084204
+  },
+  {
+    "Employer": "Workday",
+    "Title": "Not Reported",
+    "City": "Pleasanton",
+    "State": "CA",
+    "Year": 2011,
+    "latitude": 37.662431,
+    "longitude": -121.874679
+  },
+  {
+    "Employer": 0,
+    "Title": 0,
+    "City": 0,
+    "State": 0,
+    "Year": 0,
+    "latitude": 0,
+    "longitude": 0
+  },
+  {
+    "Employer": 0,
+    "Title": 0,
+    "City": 0,
+    "State": 0,
+    "Year": 0,
+    "latitude": 0,
+    "longitude": 0
+  },
+  {
+    "Employer": 0,
+    "Title": 0,
+    "City": 0,
+    "State": 0,
+    "Year": 0,
+    "latitude": 0,
+    "longitude": 0
+  },
+  {
+    "Employer": 0,
+    "Title": 0,
+    "City": 0,
+    "State": 0,
+    "Year": 0,
+    "latitude": 0,
+    "longitude": 0
+  },
+  {
+    "Employer": "Acquity Group",
+    "Title": "Associate",
+    "City": "Chicago",
+    "State": "IL",
+    "Year": 2012,
+    "latitude": 41.875555,
+    "longitude": -87.624421
+  },
+  {
+    "Employer": "Alarm.com",
+    "Title": "Software Engineer",
+    "City": "Vienna",
+    "State": "VA",
+    "Year": 2012,
+    "latitude": 48.208354,
+    "longitude": 16.372504
+  },
+  {
+    "Employer": "Amazon",
+    "Title": "Software Development Engineer (2)",
+    "City": "Seattle",
+    "State": "WA",
+    "Year": 2012,
+    "latitude": 47.603832,
+    "longitude": -122.330062
+  },
+  {
+    "Employer": "Applied Predictive Technologies",
+    "Title": "Software Engineer (2)",
+    "City": "Arlington",
+    "State": "VA",
+    "Year": 2012,
+    "latitude": 32.735582,
+    "longitude": -97.107119
+  },
+  {
+    "Employer": "Bank of America Merrill Lynch",
+    "Title": "Financial Analyst",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2012,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Bloomberg",
+    "Title": "Financial Software Developer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2012,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Bloomberg",
+    "Title": "Software Developer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2012,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Broadway Technology",
+    "Title": "Consultant",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2012,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Broadway Technology",
+    "Title": "Software Developer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2012,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Facebook",
+    "Title": "Software Engineer (2)",
+    "City": "Menlo Park",
+    "State": "CA",
+    "Year": 2012,
+    "latitude": 37.453827,
+    "longitude": -122.182187
+  },
+  {
+    "Employer": "Facebook",
+    "Title": "Tools Engineer",
+    "City": "Menlo Park",
+    "State": "CA",
+    "Year": 2012,
+    "latitude": 37.453827,
+    "longitude": -122.182187
+  },
+  {
+    "Employer": "FactSet",
+    "Title": "Software Engineer",
+    "City": "Norwalk",
+    "State": "CT",
+    "Year": 2012,
+    "latitude": 41.117597,
+    "longitude": -73.407897
+  },
+  {
+    "Employer": "Goldman Sachs",
+    "Title": "Technology Analyst",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2012,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Google",
+    "Title": "Software Engineer (2)",
+    "City": "Mountain View",
+    "State": "CA",
+    "Year": 2012,
+    "latitude": 37.385575,
+    "longitude": -122.08205
+  },
+  {
+    "Employer": "Google",
+    "Title": "Software Developer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2012,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Google",
+    "Title": "Software Engineer",
+    "City": "Kirkland",
+    "State": "WA",
+    "Year": 2012,
+    "latitude": 47.685957,
+    "longitude": -122.192025
+  },
+  {
+    "Employer": "Google",
+    "Title": "Software Engineer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2012,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "IBM",
+    "Title": "Software Engineer",
+    "City": "Boston",
+    "State": "MA",
+    "Year": 2012,
+    "latitude": 42.360482,
+    "longitude": -71.059568
+  },
+  {
+    "Employer": "Linkedin",
+    "Title": "Software Engineer",
+    "City": "Mountain View",
+    "State": "CA",
+    "Year": 2012,
+    "latitude": 37.385575,
+    "longitude": -122.08205
+  },
+  {
+    "Employer": 0,
+    "Title": 0,
+    "City": 0,
+    "State": 0,
+    "Year": 0,
+    "latitude": 0,
+    "longitude": 0
+  },
+  {
+    "Employer": 0,
+    "Title": 0,
+    "City": 0,
+    "State": 0,
+    "Year": 0,
+    "latitude": 0,
+    "longitude": 0
+  },
+  {
+    "Employer": 0,
+    "Title": 0,
+    "City": 0,
+    "State": 0,
+    "Year": 0,
+    "latitude": 0,
+    "longitude": 0
+  },
+  {
+    "Employer": 0,
+    "Title": 0,
+    "City": 0,
+    "State": 0,
+    "Year": 0,
+    "latitude": 0,
+    "longitude": 0
+  },
+  {
+    "Employer": "Advanced Micro Devices",
+    "Title": "Software Engineer 2",
+    "City": "Boylston",
+    "State": "MA",
+    "Year": 2013,
+    "latitude": 42.391759,
+    "longitude": -71.703681
+  },
+  {
+    "Employer": "Amazon",
+    "Title": "Software Development Engineer (2)",
+    "City": "Cambridge",
+    "State": "MA",
+    "Year": 2013,
+    "latitude": 52.203305,
+    "longitude": 0.124862
+  },
+  {
+    "Employer": "Amazon",
+    "Title": "Software Developer",
+    "City": "Seattle",
+    "State": "WA",
+    "Year": 2013,
+    "latitude": 47.603832,
+    "longitude": -122.330062
+  },
+  {
+    "Employer": "Azara Healthcare, LLC.",
+    "Title": "Software Engineer",
+    "City": "Burlington",
+    "State": "MA",
+    "Year": 2013,
+    "latitude": 44.472399,
+    "longitude": -73.211494
+  },
+  {
+    "Employer": "Bloomberg LP",
+    "Title": "Financial Software Developer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2013,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Broadway Technology",
+    "Title": "Software Developer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2013,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Charles River Development",
+    "Title": "Software Engineer",
+    "City": "Burlington",
+    "State": "MA",
+    "Year": 2013,
+    "latitude": 44.472399,
+    "longitude": -73.211494
+  },
+  {
+    "Employer": "Citadel LLC",
+    "Title": "Financial Technology Associate",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2013,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Facebook",
+    "Title": "Software Engineer (2)",
+    "City": "Menio Park",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 41.855188,
+    "longitude": 12.55714
+  },
+  {
+    "Employer": "Facebook",
+    "Title": "Software Engineer (2)",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2013,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Google",
+    "Title": "Software Engineer",
+    "City": "Los Angeles",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 34.054394,
+    "longitude": -118.243941
+  },
+  {
+    "Employer": "Google",
+    "Title": "Software Developer",
+    "City": "Mountain View",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 37.385575,
+    "longitude": -122.08205
+  },
+  {
+    "Employer": "Google",
+    "Title": "Software Engineer (3)",
+    "City": "Mountain View",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 37.385575,
+    "longitude": -122.08205
+  },
+  {
+    "Employer": "Google",
+    "Title": "Software Engineer (2)",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2013,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Hulu",
+    "Title": "Software Engineer",
+    "City": "Los Angeles",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 34.054394,
+    "longitude": -118.243941
+  },
+  {
+    "Employer": "IXL Learning",
+    "Title": "Software Engineer (2)",
+    "City": "San Mateo",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 37.496904,
+    "longitude": -122.333057
+  },
+  {
+    "Employer": "JP Morgan Chase & Co.",
+    "Title": "Business Analyst",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2013,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Mathworks, Inc.",
+    "Title": "Associate Software Analyst",
+    "City": "Natick",
+    "State": "MA",
+    "Year": 2013,
+    "latitude": 42.283639,
+    "longitude": -71.346996
+  },
+  {
+    "Employer": "Microsoft",
+    "Title": "Software Development Engineer",
+    "City": "San Francisco",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 37.779277,
+    "longitude": -122.41927
+  },
+  {
+    "Employer": "Microsoft",
+    "Title": "Software Development Engineer (3)",
+    "City": "Redmond",
+    "State": "WA",
+    "Year": 2013,
+    "latitude": 47.669414,
+    "longitude": -122.123877
+  },
+  {
+    "Employer": "Microsoft",
+    "Title": "Software Development Engineer in Test",
+    "City": "Redmond",
+    "State": "WA",
+    "Year": 2013,
+    "latitude": 47.669414,
+    "longitude": -122.123877
+  },
+  {
+    "Employer": "Microsoft",
+    "Title": "Technical Account Manager",
+    "City": "Redmond",
+    "State": "WA",
+    "Year": 2013,
+    "latitude": 47.669414,
+    "longitude": -122.123877
+  },
+  {
+    "Employer": "Nutanix",
+    "Title": "Software Developer",
+    "City": "San Jose",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 37.336191,
+    "longitude": -121.890583
+  },
+  {
+    "Employer": "Palantir Technologies, Inc.",
+    "Title": "Data Scientist",
+    "City": "Palo Alto",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 37.442156,
+    "longitude": -122.163447
+  },
+  {
+    "Employer": "Palantir Technologies, Inc.",
+    "Title": "Software Engineer (2)",
+    "City": "Palo Alto",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 37.442156,
+    "longitude": -122.163447
+  },
+  {
+    "Employer": "Palantir Technologies, Inc.",
+    "Title": "Forward Deployed Engineer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2013,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Palantir Technologies, Inc.",
+    "Title": "Software Engineer",
+    "City": "McLean",
+    "State": "VA",
+    "Year": 2013,
+    "latitude": 40.463179,
+    "longitude": -88.819661
+  },
+  {
+    "Employer": "Roblox",
+    "Title": "Software Engineer",
+    "City": "San Mateo",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 37.496904,
+    "longitude": -122.333057
+  },
+  {
+    "Employer": "Samsung Information Systems",
+    "Title": "Associate Engineer",
+    "City": "San Jose",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 37.336191,
+    "longitude": -121.890583
+  },
+  {
+    "Employer": "Square, Inc.",
+    "Title": "Software Engineer",
+    "City": "San Francisco",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 37.779277,
+    "longitude": -122.41927
+  },
+  {
+    "Employer": "Susquehanna International Group",
+    "Title": "Technology Associate",
+    "City": "Bala Cynwyd",
+    "State": "PA",
+    "Year": 2013,
+    "latitude": 40.007613,
+    "longitude": -75.234069
+  },
+  {
+    "Employer": "Tripadvisor",
+    "Title": "Software Developer",
+    "City": "Newton",
+    "State": "MA",
+    "Year": 2013,
+    "latitude": 42.337041,
+    "longitude": -71.209221
+  },
+  {
+    "Employer": "Visual Supply Company",
+    "Title": "Android Engineer",
+    "City": "San Ramon",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 37.779927,
+    "longitude": -121.978015
+  },
+  {
+    "Employer": "Wayfair, LLC",
+    "Title": "Software Engineer",
+    "City": "Boston",
+    "State": "MA",
+    "Year": 2013,
+    "latitude": 42.360482,
+    "longitude": -71.059568
+  },
+  {
+    "Employer": "Workday, Inc.",
+    "Title": "Associate Applications Developer",
+    "City": "Pleasanton",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 37.662431,
+    "longitude": -121.874679
+  },
+  {
+    "Employer": "Workday, Inc.",
+    "Title": "Software Engineer",
+    "City": "Pleasanton",
+    "State": "CA",
+    "Year": 2013,
+    "latitude": 37.662431,
+    "longitude": -121.874679
+  },
+  {
+    "Employer": 0,
+    "Title": 0,
+    "City": 0,
+    "State": 0,
+    "Year": 0,
+    "latitude": 0,
+    "longitude": 0
+  },
+  {
+    "Employer": 0,
+    "Title": 0,
+    "City": 0,
+    "State": 0,
+    "Year": 0,
+    "latitude": 0,
+    "longitude": 0
+  },
+  {
+    "Employer": 0,
+    "Title": 0,
+    "City": 0,
+    "State": 0,
+    "Year": 0,
+    "latitude": 0,
+    "longitude": 0
+  },
+  {
+    "Employer": 0,
+    "Title": 0,
+    "City": 0,
+    "State": 0,
+    "Year": 0,
+    "latitude": 0,
+    "longitude": 0
+  },
+  {
+    "Employer": 0,
+    "Title": 0,
+    "City": 0,
+    "State": 0,
+    "Year": 0,
+    "latitude": 0,
+    "longitude": 0
+  },
+  {
+    "Employer": "Amazon",
+    "Title": "Software Development Engineer (2)",
+    "City": "Seattle",
+    "State": "WA",
+    "Year": 2014,
+    "latitude": 47.603832,
+    "longitude": -122.330062
+  },
+  {
+    "Employer": "Amazon",
+    "Title": "Software Engineer (3)",
+    "City": "Seattle",
+    "State": "WA",
+    "Year": 2014,
+    "latitude": 47.603832,
+    "longitude": -122.330062
+  },
+  {
+    "Employer": "Amazon",
+    "Title": "Software Engineer (2)",
+    "City": "San Francisco",
+    "State": "CA",
+    "Year": 2014,
+    "latitude": 37.779277,
+    "longitude": -122.41927
+  },
+  {
+    "Employer": "AOE Hewitt/McLagan",
+    "Title": "Health and Benefits Specialist-Actuarial",
+    "City": "Seattle",
+    "State": "WA",
+    "Year": 2014,
+    "latitude": 47.603832,
+    "longitude": -122.330062
+  },
+  {
+    "Employer": "Applied Predictive Technologies",
+    "Title": "Front End Software Engineer",
+    "City": "Baltimore",
+    "State": "MD",
+    "Year": 2014,
+    "latitude": 39.290861,
+    "longitude": -76.610807
+  },
+  {
+    "Employer": "Arista Networks",
+    "Title": "Software Developer",
+    "City": "San Francisco",
+    "State": "CA",
+    "Year": 2014,
+    "latitude": 37.779277,
+    "longitude": -122.41927
+  },
+  {
+    "Employer": "AT&T",
+    "Title": "Associate Software Developer",
+    "City": "Dallas",
+    "State": "TX",
+    "Year": 2014,
+    "latitude": 32.776272,
+    "longitude": -96.796856
+  },
+  {
+    "Employer": "AthenaHealth",
+    "Title": "Software Developer",
+    "City": "Boston",
+    "State": "MA",
+    "Year": 2014,
+    "latitude": 42.360482,
+    "longitude": -71.059568
+  },
+  {
+    "Employer": "Autodesk",
+    "Title": "Developer",
+    "City": "San Francisco",
+    "State": "CA",
+    "Year": 2014,
+    "latitude": 37.779277,
+    "longitude": -122.41927
+  },
+  {
+    "Employer": "Barclays",
+    "Title": "Technology Analyst",
+    "City": "Singapore",
+    "State": "SINGAPORE",
+    "Year": 2014,
+    "latitude": 1.290453,
+    "longitude": 103.852038
+  },
+  {
+    "Employer": "Birchbox Inc.",
+    "Title": "Software Engineer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2014,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Bloomberg",
+    "Title": "Financial Software Engineer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2014,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Bloomberg",
+    "Title": "Software Engineer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2014,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Cisco Systems",
+    "Title": "Software Engineer",
+    "City": "San Jose",
+    "State": "CA",
+    "Year": 2014,
+    "latitude": 37.336191,
+    "longitude": -121.890583
+  },
+  {
+    "Employer": "Ebay",
+    "Title": "Software Engineer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2014,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Epic Systems",
+    "Title": "Software Developer",
+    "City": "Madison",
+    "State": "WI",
+    "Year": 2014,
+    "latitude": 43.074761,
+    "longitude": -89.383761
+  },
+  {
+    "Employer": "Facebook",
+    "Title": "Software Engineer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2014,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Facebook",
+    "Title": "Software Engineer (2)",
+    "City": "San Francisco",
+    "State": "CA",
+    "Year": 2014,
+    "latitude": 37.779277,
+    "longitude": -122.41927
+  },
+  {
+    "Employer": "Goldman Sachs",
+    "Title": "Analyst Programmer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2014,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Goldman Sachs",
+    "Title": "Quantitative Strategist",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2014,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Goldman Sachs",
+    "Title": "Software Developer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2014,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Google",
+    "Title": "Site Reliability Engineer",
+    "City": "Kirkland",
+    "State": "WA",
+    "Year": 2014,
+    "latitude": 47.685957,
+    "longitude": -122.192025
+  },
+  {
+    "Employer": "Google",
+    "Title": "Site Reliability Engineer (2)",
+    "City": "San Francisco",
+    "State": "CA",
+    "Year": 2014,
+    "latitude": 37.779277,
+    "longitude": -122.41927
+  },
+  {
+    "Employer": "Google",
+    "Title": "Software Development Engineer (6)",
+    "City": "San Francisco",
+    "State": "CA",
+    "Year": 2014,
+    "latitude": 37.779277,
+    "longitude": -122.41927
+  },
+  {
+    "Employer": "Guidewire Software Inc.",
+    "Title": "Software Engineer",
+    "City": "San Francisco",
+    "State": "CA",
+    "Year": 2014,
+    "latitude": 37.779277,
+    "longitude": -122.41927
+  },
+  {
+    "Employer": "IBM",
+    "Title": "Software Developer",
+    "City": "Cleveland",
+    "State": "OH",
+    "Year": 2014,
+    "latitude": 41.505161,
+    "longitude": -81.693445
+  },
+  {
+    "Employer": "IBM",
+    "Title": "Software Engineer",
+    "City": "Littleton",
+    "State": "MA",
+    "Year": 2014,
+    "latitude": 39.613321,
+    "longitude": -105.01665
+  },
+  {
+    "Employer": "Jet Program",
+    "Title": "English Teacher Assistant in Japan",
+    "City": "Migata",
+    "State": "JAPAN",
+    "Year": 2014,
+    "latitude": 53.580556,
+    "longitude": 9.973069
+  },
+  {
+    "Employer": "Microsoft",
+    "Title": "Program Manager",
+    "City": "Redmond",
+    "State": "WA",
+    "Year": 2014,
+    "latitude": 47.669414,
+    "longitude": -122.123877
+  },
+  {
+    "Employer": "Microsoft",
+    "Title": "Software Development Engineer (5)",
+    "City": "Redmond",
+    "State": "WA",
+    "Year": 2014,
+    "latitude": 47.669414,
+    "longitude": -122.123877
+  },
+  {
+    "Employer": "MongoDB",
+    "Title": "Software Engineer",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2014,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Palantir Technologies, Inc.",
+    "Title": "Forward Deployed Software Engineering",
+    "City": "New York City",
+    "State": "NY",
+    "Year": 2014,
+    "latitude": 40.730599,
+    "longitude": -73.986581
+  },
+  {
+    "Employer": "Plethora",
+    "Title": "Computational Geometry Engineer",
+    "City": "San Francisco",
+    "State": "CA",
+    "Year": 2014,
+    "latitude": 37.779277,
+    "longitude": -122.41927
+  },
+  {
+    "Employer": "Quettra",
+    "Title": "Software Engineer",
+    "City": "San Francisco",
+    "State": "CA",
+    "Year": 2014,
+    "latitude": 37.779277,
+    "longitude": -122.41927
+  },
+  {
+    "Employer": "Sentrana",
+    "Title": "Software Engineer",
+    "City": "Baltimore",
+    "State": "MD",
+    "Year": 2014,
+    "latitude": 39.290861,
+    "longitude": -76.610807
+  },
+  {
+    "Employer": "Workday",
+    "Title": "Associate Application Developer",
+    "City": "San Francisco",
+    "State": "CA",
+    "Year": 2014,
+    "latitude": 37.779277,
+    "longitude": -122.41927
+  },
+  {
+    "Employer": "Workday",
+    "Title": "Associate Software Engineer (3)",
+    "City": "San Francisco",
+    "State": "CA",
+    "Year": 2014,
+    "latitude": 37.779277,
+    "longitude": -122.41927
+  }
+]
