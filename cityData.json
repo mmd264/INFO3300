@@ -1,0 +1,194 @@
+[
+  {
+    "city": "San Francisco",
+    "jobs": 5700,
+    "mean_salary": 104770,
+    "median_salary": 105970,
+    "percent_students_going": 0.28,
+    "year": 2014
+  },
+  {
+    "city": "Boston",
+    "jobs": 5830,
+    "mean_salary": 89370,
+    "median_salary": 87050,
+    "percent_students_going": 0.05,
+    "year": 2014
+  },
+  {
+    "city": "NYC",
+    "jobs": 15880,
+    "mean_salary": 91390,
+    "median_salary": 83470,
+    "percent_students_going": 0.21,
+    "year": 2014
+  },
+  {
+    "city": "Atlanta",
+    "jobs": 8430,
+    "mean_salary": 98240,
+    "median_salary": 85890,
+    "percent_students_going": 0,
+    "year": 2014
+  },
+  {
+    "city": "Chicago",
+    "jobs": 15110,
+    "mean_salary": 74300,
+    "median_salary": 73750,
+    "percent_students_going": 0.02,
+    "year": 2014
+  },
+  {
+    "city": "Seattle",
+    "jobs": 12280,
+    "mean_salary": 119760,
+    "median_salary": 119790,
+    "percent_students_going": 0.13,
+    "year": 2014
+  },
+  {
+    "city": "San Francisco",
+    "jobs": 6070,
+    "mean_salary": 99550,
+    "median_salary": 97260,
+    "percent_students_going": 0.43,
+    "year": 2013
+  },
+  {
+    "city": "Boston",
+    "jobs": 5210,
+    "mean_salary": 83550,
+    "median_salary": 80920,
+    "percent_students_going": 0.06,
+    "year": 2013
+  },
+  {
+    "city": "NYC",
+    "jobs": 15810,
+    "mean_salary": 91010,
+    "median_salary": 86210,
+    "percent_students_going": 0.13,
+    "year": 2013
+  },
+  {
+    "city": "Atlanta",
+    "jobs": 8850,
+    "mean_salary": 93880,
+    "median_salary": 83280,
+    "percent_students_going": 0,
+    "year": 2013
+  },
+  {
+    "city": "Chicago",
+    "jobs": 16480,
+    "mean_salary": 75720,
+    "median_salary": 73080,
+    "percent_students_going": 0,
+    "year": 2013
+  },
+  {
+    "city": "Seattle",
+    "jobs": 14050,
+    "mean_salary": 115530,
+    "median_salary": 115050,
+    "percent_students_going": 0.19,
+    "year": 2013
+  },
+  {
+    "city": "San Francisco",
+    "jobs": 5390,
+    "mean_salary": 100450,
+    "median_salary": 98940,
+    "percent_students_going": 0.26,
+    "year": 2012
+  },
+  {
+    "city": "Boston",
+    "jobs": 5350,
+    "mean_salary": 80890,
+    "median_salary": 75330,
+    "percent_students_going": 0.05,
+    "year": 2012
+  },
+  {
+    "city": "NYC",
+    "jobs": 16470,
+    "mean_salary": 86410,
+    "median_salary": 82300,
+    "percent_students_going": 0.31,
+    "year": 2012
+  },
+  {
+    "city": "Atlanta",
+    "jobs": 9520,
+    "mean_salary": 89910,
+    "median_salary": 78910,
+    "percent_students_going": 0,
+    "year": 2012
+  },
+  {
+    "city": "Chicago",
+    "jobs": 16340,
+    "mean_salary": 77970,
+    "median_salary": 72490,
+    "percent_students_going": 0,
+    "year": 2012
+  },
+  {
+    "city": "Seattle",
+    "jobs": 11020,
+    "mean_salary": 95960,
+    "median_salary": 95180,
+    "percent_students_going": 0.17,
+    "year": 2012
+  },
+  {
+    "city": "San Francisco",
+    "jobs": 4440,
+    "mean_salary": 97630,
+    "median_salary": 65000,
+    "percent_students_going": 0.27,
+    "year": 2011
+  },
+  {
+    "city": "Boston",
+    "jobs": 5390,
+    "mean_salary": 88020,
+    "median_salary": 85600,
+    "percent_students_going": 0.05,
+    "year": 2011
+  },
+  {
+    "city": "NYC",
+    "jobs": 20230,
+    "mean_salary": "76650 - 114910",
+    "median_salary": 75000,
+    "percent_students_going": 0.18,
+    "year": 2011
+  },
+  {
+    "city": "Atlanta",
+    "jobs": 7750,
+    "mean_salary": 78050,
+    "median_salary": 76880,
+    "percent_students_going": 0,
+    "year": 2011
+  },
+  {
+    "city": "Chicago",
+    "jobs": 15380,
+    "mean_salary": "76650 - 114910",
+    "median_salary": 68000,
+    "percent_students_going": 0,
+    "year": 2011
+  },
+  {
+    "city": "Seattle",
+    "jobs": 9290,
+    "mean_salary": "76650 - 114910",
+    "median_salary": 65000,
+    "percent_students_going": 0.09,
+    "year": 2011
+  }
+]
