@@ -1,0 +1,508 @@
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<!-- Load the d3 library. -->
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<style>
+<style>
+	body { font-family: "Open Sans"; }
+	div { margin: 30px; }
+	svg { background-color: #eee; }
+	.axis path { fill: none; stroke: black; }
+	.axis line { stroke: black; }
+	.axis text { font-size: 10pt; }
+	path.outline { fill: none; stroke-width: 5; stroke: white; }
+	path.plot { fill: none; stroke-width: 3; }
+</style>
+</head>
+<body>
+
+	<h3>The median salaires of recent Cornell Engineering CS grads, and jobs in NYC, San Francisco, and Seattle from 2011-2014</h3>
+<div id="graph"></div>
+<div id="graphLegend"></div>
+<script>
+
+function indexToColor(i) 
+{
+	if (i==0) 
+	{
+		return "red";
+	}
+	else if (i==1) 
+	{
+		return "purple";
+	}
+	else if (i==2) 
+	{
+		return "blue";
+	}
+	else if (i==3)
+	{
+		return "yellow";
+	}
+}
+
+
+var width = 960,
+    height = 500;
+		
+var svgMedian = d3.select("#graph").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+var g = svgMedian.append("g");
+
+var svgGLegend = d3.select("#graphLegend").append("svg")
+	.attr("width", width)
+	.attr("height", 80);
+
+	for (i=0; i<4; i++) {
+		svgGLegend.append("rect")
+		.attr("x", 60+(960/4)*(i))
+		.attr("y", 0)
+		.attr("height", 40)
+		.attr("width", 960/8)
+		.attr("fill", indexToColor(i));
+	}
+	svgGLegend.append("text")
+	.text("Recent Grads")
+	.attr("x", 75)
+	.attr("y", 60);
+	svgGLegend.append("text")
+	.text("Seattle")
+	.attr("x", 335)
+	.attr("y", 60);
+	svgGLegend.append("text")
+	.text("San Francisco")
+	.attr("x", 555)
+	.attr("y", 60);
+	svgGLegend.append("text")
+	.text("NYC")
+	.attr("x", 820)
+	.attr("y", 60);
+
+var padding = 60;
+var xScale = d3.scale.linear().domain([2011, 2014]).range([padding, width-padding]);
+var yScale = d3.scale.linear().domain([60000, 120000]).range([height - padding, padding]);
+
+var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+.ticks(4);
+var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
+
+svgMedian.append("g").attr("transform", "translate(0," + (height - padding) + ")").attr("class", "axis")
+.call(xAxis);
+svgMedian.append("g").attr("transform", "translate(" + padding + ",0)").attr("class", "axis")
+.call(yAxis);
+
+
+var csMajor = [];
+var aemMajor = [];
+var asMajor = [];
+var seattleMed = [];
+var nycMed = [];
+var sfMed = [];
+
+d3.json("http://localwebapp:8888/Project1/MedianSalaries.json", function(error, years) {
+
+	if (error) { console.log(error); }
+
+	yearObjects = years;
+
+
+	yearObjects.forEach(function(year) {
+		if (year.Major=="CS")
+		{
+			csMajor.push(year);
+		}
+	});
+
+	var medianLine = d3.svg.line()
+	.x(function (d) { return xScale(d.Year); })
+	.y(function (d) { return yScale(d.Median); });
+
+	svgMedian.append("path").attr("d", medianLine(csMajor))
+	.attr("class", "outline").attr("stroke", "white");
+	svgMedian.append("path").attr("d", medianLine(csMajor))
+	.attr("class", "plot").attr("stroke", "red");
+});
+
+d3.json("http://localwebapp:8888/Project1/CityData.json", function(error, years) {
+
+	if (error) { console.log(error); }
+
+	yearObjects = years;
+
+
+	yearObjects.forEach(function(city) {
+		if (city.city=="San Francisco")
+		{
+			sfMed.push(city);
+		}
+		else if (city.city=="NYC")
+		{
+			nycMed.push(city);
+		}
+		else if (city.city=="Seattle")
+		{
+			seattleMed.push(city);
+		}
+	});
+
+	console.log(sfMed);
+
+	
+	var medianLine = d3.svg.line()
+	.x(function (d) { return xScale(d.year); })
+	.y(function (d) { return yScale(d.median_salary); });
+
+	svgMedian.append("path").attr("d", medianLine(sfMed))
+	.attr("class", "outline").attr("stroke", "white");
+	svgMedian.append("path").attr("d", medianLine(sfMed))
+	.attr("class", "plot").attr("stroke", "blue");
+
+	svgMedian.append("path").attr("d", medianLine(nycMed))
+	.attr("class", "outline").attr("stroke", "white");
+	svgMedian.append("path").attr("d", medianLine(nycMed))
+	.attr("class", "plot").attr("stroke", "yellow");
+
+	svgMedian.append("path").attr("d", medianLine(seattleMed))
+	.attr("class", "outline").attr("stroke", "white");
+	svgMedian.append("path").attr("d", medianLine(seattleMed))
+	.attr("class", "plot").attr("stroke", "purple");
+});
+
+
+</script>
+
+
+<h3>A map of where recent Engineering CS graduates from Cornell work after they graduated from 2011-2014.</h3>
+
+
+
+<!-- The SVG element will go in here -->
+<div id="map"></div>
+<div id="mapLegend"></div>
+<script>
+var width = 960,
+    height = 500;
+
+// A projection is a particular type of scale, that maps
+// a pair of LONGITUDE, LATITUDE coordinates (NOT the other
+// way around) to a point in pixel space.
+var projection = d3.geo.albersUsa();
+// Look at the documentation https://github.com/mbostock/d3/wiki/Geo-Projections
+// for different projections and ways to change the 
+// zoom and center of the projection. 
+
+// This function will convert a set of coordinates
+//  into a <path> attribute.
+var path = d3.geo.path().projection(projection);
+	
+var svgLoc = d3.select("#map").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+var g = svgLoc.append("g");
+var centered;
+
+var svgMapLegend = d3.select("#mapLegend").append("svg")
+.attr("width", width/2)
+.attr("height", 200);
+
+for (i=0; i<4; i++)
+{
+	svgMapLegend.append("circle")
+	.attr("r", 20)
+	.attr("cy", 25+200/4*i)
+	.attr("cx", 25)
+	.attr("stroke", indexToColor(i))
+	.attr("fill-opacity", 0.1);
+}
+svgMapLegend.append("text")
+.text('2011')
+.attr("y", 30)
+.attr("x", 50);
+svgMapLegend.append("text")
+.text('2012')
+.attr("y", 80)
+.attr("x", 50);
+svgMapLegend.append("text")
+.text('2013')
+.attr("y", 130)
+.attr("x", 50);
+svgMapLegend.append("text")
+.text('2014')
+.attr("y", 180)
+.attr("x", 50);
+
+svgMapLegend.append("circle")
+.attr("cx", 300)
+.attr("cy", 30)
+.attr("r", scaleRadius(1))
+.attr("fill_opacity", 0.1)
+.attr("stroke", "black")
+.attr("stroke_width", "0.5");
+svgMapLegend.append("circle")
+.attr("cx", 300)
+.attr("cy", 75)
+.attr("r", scaleRadius(5))
+.attr("fill_opacity", 0.1)
+.attr("stroke", "black")
+.attr("stroke_width", "0.5");
+svgMapLegend.append("circle")
+.attr("cx", 300)
+.attr("cy", 120)
+.attr("r", scaleRadius(10))
+.attr("fill_opacity", 0.1)
+.attr("stroke", "black")
+.attr("stroke_width", "0.5");
+svgMapLegend.append("circle")
+.attr("cx", 300)
+.attr("cy", 170)
+.attr("r", scaleRadius(20))
+.attr("fill_opacity", 0.1)
+.attr("stroke", "black")
+.attr("stroke_width", "0.5");
+
+svgMapLegend.append("text")
+.text('1 Job')
+.attr("y", 35)
+.attr("x", 315);
+svgMapLegend.append("text")
+.text('5 Jobs')
+.attr("y", 80)
+.attr("x", 315);
+svgMapLegend.append("text")
+.text('10 Jobs')
+.attr("y", 125)
+.attr("x", 315);
+svgMapLegend.append("text")
+.text('20 Jobs')
+.attr("y", 175)
+.attr("x", 315);
+
+var employeeObjects;
+var fullCityFreq = [];
+var cityFreq11 = [];
+var cityFreq12 = [];
+var cityFreq13 = [];
+var cityFreq14 = [];
+
+function scaleRadius(freq)
+{
+	var r = Math.sqrt(freq);
+	return r*3;
+}
+
+function empTo11(employee) {
+	if (typeof cityFreq11[employee.City] === 'undefined' )
+	{
+		cityFreq11[employee.City] = [1, employee.longitude, employee.latitude];
+	}
+	else 
+	{
+		cityFreq11[employee.City][0] = cityFreq11[employee.City][0]+1;
+	}
+}
+
+function empTo12(employee) {
+	if (typeof cityFreq12[employee.City] === 'undefined' )
+	{
+		cityFreq12[employee.City] = [1, employee.longitude, employee.latitude];
+	}
+	else 
+	{
+		cityFreq12[employee.City][0] = cityFreq12[employee.City][0]+1;
+	}
+}
+
+function empTo13(employee) {
+	if (typeof cityFreq13[employee.City] === 'undefined' )
+	{
+		cityFreq13[employee.City] = [1, employee.longitude, employee.latitude];
+	}
+	else 
+	{
+		cityFreq13[employee.City][0] = cityFreq13[employee.City][0]+1;
+	}
+}
+
+function empTo14(employee) {
+	if (typeof cityFreq14[employee.City] === 'undefined' )
+	{
+		cityFreq14[employee.City] = [1, employee.longitude, employee.latitude];
+	}
+	else 
+	{
+		cityFreq14[employee.City][0] = cityFreq14[employee.City][0]+1;
+	}
+}
+// Get a JSON file containing coordinates of 
+//  countries and landmasses. This is from an 
+//  example provided by Mike Bostock.
+d3.json("http://localwebapp:8888/Notes/021916/us.json", function(error, us) {
+	stateObjects = us;
+	
+	// ANY time we do I/O we should check for errors.
+	if (error) { console.log(error); }
+	
+	// Get an array of coordinate lists for 241 
+	//  geographic entites. This includes sovereign 
+	//  countries as well as territories like Guam.
+	var states = topojson.feature(us, us.objects.states).features;
+	
+	// convert each country's data into a path element.
+	states.forEach(function (state) {
+		g.append("path").attr("d", path(state))
+		.style("fill", "#ccc")
+		.style("stroke", "#888");
+	});
+	
+	// We can attach events to SVG elements.
+	//  When we map data elements to svg elements,
+	//  we can then define behaviors without specifying
+	//  a particular country. 
+	/*g.selectAll("path").data(states)
+	.on("mouseover", function (state) {
+		console.log(states.id);
+	});*/
+
+	/*This function is from https://bl.ocks.org/mbostock/2206590
+	We felt it was necessary to help make our map more understandable.*/
+	g.selectAll("path").data(states)
+	.on("click", function clicked(d) {
+		var x, y, k;
+		if (d && centered !== d) {
+			var centroid = path.centroid(d);
+			x = centroid[0];
+			y = centroid[1];
+			k = 2.5;
+			centered = d;
+		} else {
+			x = width / 2;
+			y = height / 2;
+			k = 1;
+			centered = null;
+		}
+
+		g.selectAll("path")
+		.classed("active", centered && function(d) { return d === centered; });
+
+		g.transition()
+		.duration(750)
+		.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+		.style("stroke-width", 1.5 / k + "px");
+	});
+
+	d3.json("http://localwebapp:8888/Project1/locations.json", function(error, employee)
+{
+	employeeObjects = employee;
+
+	if (error)
+	{
+		console.log(error);
+	}
+
+
+	employeeObjects.forEach(function (employee) {
+
+		if (employee.City != 0 && employee.longitude < -60 && employee.longitude > -170 ) 
+		{
+			if (employee.Year == "2011")
+			{
+				empTo11(employee);
+			}
+			else if (employee.Year == "2012")
+			{
+				empTo12(employee);
+			}
+			else if (employee.Year == "2013")
+			{
+				empTo13(employee);
+			}
+			else if (employee.Year == "2014")
+			{
+				empTo14(employee);
+			}
+
+			if (typeof fullCityFreq[employee.City] === 'undefined' )
+			{
+				fullCityFreq[employee.City] = [1, employee.longitude, employee.latitude];
+			}
+			else 
+			{
+				fullCityFreq[employee.City][0] = fullCityFreq[employee.City][0]+1;
+			}
+		}
+
+	});
+
+
+	Object.keys(cityFreq11).forEach(function (city) {
+
+		var cityCoords = projection([cityFreq11[city][1], cityFreq11[city][2]]);
+		g.append("circle").attr("cx", cityCoords[0])
+		.attr("cy", cityCoords[1])
+		.attr("r", scaleRadius(cityFreq11[city][0]))
+		.attr("fill-opacity", "0.1")
+		.attr("fill", "red")
+		.attr("stroke", "red")
+		.attr("stroke-width", "0.5")
+		.attr("strok-opacity", "0.1");
+	});
+
+	Object.keys(cityFreq12).forEach(function (city) {
+
+		var cityCoords = projection([cityFreq12[city][1], cityFreq12[city][2]]);
+		g.append("circle").attr("cx", cityCoords[0])
+		.attr("cy", cityCoords[1])
+		.attr("r", scaleRadius(cityFreq12[city][0]))
+		.attr("fill-opacity", "0.1")
+		.attr("fill", "purple")
+		.attr("stroke", "purple")
+		.attr("stroke-width", "0.5")
+		.attr("strok-opacity", "0.6");
+	});
+
+	Object.keys(cityFreq13).forEach(function (city) {
+
+		var cityCoords = projection([cityFreq13[city][1], cityFreq13[city][2]]);
+		g.append("circle").attr("cx", cityCoords[0])
+		.attr("cy", cityCoords[1])
+		.attr("r", scaleRadius(cityFreq13[city][0]))
+		.attr("fill-opacity", "0.1")
+		.attr("fill", "blue")
+		.attr("stroke", "blue")
+		.attr("stroke-width", "0.5")
+		.attr("strok-opacity", "0.6");
+	});
+
+	Object.keys(cityFreq14).forEach(function (city) {
+
+		var cityCoords = projection([cityFreq14[city][1], cityFreq14[city][2]]);
+		g.append("circle").attr("cx", cityCoords[0])
+		.attr("cy", cityCoords[1])
+		.attr("r", scaleRadius(cityFreq14[city][0]))
+		.attr("fill-opacity", "0.1")
+		.attr("fill", "yellow")
+		.attr("stroke", "yellow")
+		.attr("stroke-width", "0.5")
+		.attr("strok-opacity", "0.6");
+	});
+
+});
+	
+});
+
+
+
+
+// The .json() function returns immediately, without
+//  waiting for the response. But it spins off a separate
+//  thread that waits for the response to come back, and
+//  then executes the function that we gave it.
+console.log("after json");
+
+</script>
+
+</body>
+</html>
