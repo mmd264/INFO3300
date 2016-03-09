@@ -1,0 +1,904 @@
+<html>
+<head>
+    <!-- Load D3 library -->
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <style>body { font-family: "Open Sans"; } div { margin: 30px; }</style>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <style>
+    	body { font-family: "Open Sans"; }
+    	div { margin: 30px; }
+    	svg { background-color: #eee; }
+    	.axis path { fill: none; stroke: black; }
+    	.axis line { stroke: black; }
+    	.axis text { font-size: 10pt; }
+    	path.outline { fill: none; stroke-width: 5; stroke: white; }
+    	path.plot { fill: none; stroke-width: 3; }
+    </style>
+</head>
+<body>
+
+    <!-- Headers and intro paragraph -->
+    <div id="header_and_intro">
+        <h1 style="font-size:50">A Look into the post-grad life for Cornell Computer Science Students</h1>
+        <p style="font-size:30">Authors: Jack Tregurtha, Miranda Deane, and Gabriel Gonzalez </p>
+    </div>
+    <div>
+        <h3>The median salaires of recent Cornell Engineering CS grads, and jobs in NYC, San Francisco, and Seattle from 2011-2014</h3>
+        <p>Here we compare the median salary of Cornell graduates with the median salaries of the cities they most frequently go to. The city data represents the median salary of all computer programmers in that city, whereas the Cornell data is that of only Cornell computer science students.
+        </p>
+    </div>
+    <div id="graph"></div>
+    <div id="graphLegend"></div>
+    <script>
+
+    function indexToColor(i)
+    {
+    	if (i==0)
+    	{
+    		return "red";
+    	}
+    	else if (i==1)
+    	{
+    		return "purple";
+    	}
+    	else if (i==2)
+    	{
+    		return "blue";
+    	}
+    	else if (i==3)
+    	{
+    		return "yellow";
+    	}
+    }
+
+
+    var width = 960,
+        height = 500;
+
+    var svgMedian = d3.select("#graph").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+    var g = svgMedian.append("g");
+
+    var svgGLegend = d3.select("#graphLegend").append("svg")
+    	.attr("width", width)
+    	.attr("height", 80);
+
+    	for (i=0; i<4; i++) {
+    		svgGLegend.append("rect")
+    		.attr("x", 60+(960/4)*(i))
+    		.attr("y", 0)
+    		.attr("height", 40)
+    		.attr("width", 960/8)
+    		.attr("fill", indexToColor(i));
+    	}
+    	svgGLegend.append("text")
+    	.text("Recent Grads")
+    	.attr("x", 75)
+    	.attr("y", 60);
+    	svgGLegend.append("text")
+    	.text("Seattle")
+    	.attr("x", 335)
+    	.attr("y", 60);
+    	svgGLegend.append("text")
+    	.text("San Francisco")
+    	.attr("x", 555)
+    	.attr("y", 60);
+    	svgGLegend.append("text")
+    	.text("NYC")
+    	.attr("x", 820)
+    	.attr("y", 60);
+
+    var padding = 60;
+    var xScale = d3.scale.linear().domain([2011, 2014]).range([padding, width-padding]);
+    var yScale = d3.scale.linear().domain([60000, 120000]).range([height - padding, padding]);
+
+    var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+    .ticks(4);
+    var yAxis = d3.svg.axis().scale(yScale).orient("left").ticks(10);
+
+    svgMedian.append("g").attr("transform", "translate(0," + (height - padding) + ")").attr("class", "axis")
+    .call(xAxis);
+    svgMedian.append("g").attr("transform", "translate(" + padding + ",0)").attr("class", "axis")
+    .call(yAxis);
+
+
+    var csMajor = [];
+    var aemMajor = [];
+    var asMajor = [];
+    var seattleMed = [];
+    var nycMed = [];
+    var sfMed = [];
+
+    d3.json("MedianSalaries.json", function(error, years) {
+
+    	if (error) { console.log(error); }
+
+    	yearObjects = years;
+
+
+    	yearObjects.forEach(function(year) {
+    		if (year.Major=="CS")
+    		{
+    			csMajor.push(year);
+    		}
+    	});
+
+    	var medianLine = d3.svg.line()
+    	.x(function (d) { return xScale(d.Year); })
+    	.y(function (d) { return yScale(d.Median); });
+
+    	svgMedian.append("path").attr("d", medianLine(csMajor))
+    	.attr("class", "outline").attr("stroke", "white");
+    	svgMedian.append("path").attr("d", medianLine(csMajor))
+    	.attr("class", "plot").attr("stroke", "red");
+    });
+
+    d3.json("cityData.json", function(error, years) {
+
+    	if (error) { console.log(error); }
+
+    	yearObjects = years;
+
+
+    	yearObjects.forEach(function(city) {
+    		if (city.city=="San Francisco")
+    		{
+    			sfMed.push(city);
+    		}
+    		else if (city.city=="NYC")
+    		{
+    			nycMed.push(city);
+    		}
+    		else if (city.city=="Seattle")
+    		{
+    			seattleMed.push(city);
+    		}
+    	});
+
+    	console.log(sfMed);
+
+
+    	var medianLine = d3.svg.line()
+    	.x(function (d) { return xScale(d.year); })
+    	.y(function (d) { return yScale(d.median_salary); });
+
+    	svgMedian.append("path").attr("d", medianLine(sfMed))
+    	.attr("class", "outline").attr("stroke", "white");
+    	svgMedian.append("path").attr("d", medianLine(sfMed))
+    	.attr("class", "plot").attr("stroke", "blue");
+
+    	svgMedian.append("path").attr("d", medianLine(nycMed))
+    	.attr("class", "outline").attr("stroke", "white");
+    	svgMedian.append("path").attr("d", medianLine(nycMed))
+    	.attr("class", "plot").attr("stroke", "yellow");
+
+    	svgMedian.append("path").attr("d", medianLine(seattleMed))
+    	.attr("class", "outline").attr("stroke", "white");
+    	svgMedian.append("path").attr("d", medianLine(seattleMed))
+    	.attr("class", "plot").attr("stroke", "purple");
+    });
+
+
+    </script>
+
+    <div>
+        <h3>Map Showing Where Recent Cornell CS work from 2011-2014.</h3>
+        <p>The data for this map was acquired from the Cornell CS website. As one would expect, many students go to New York City and San Francisco.</p>
+    </div>
+
+
+    <!-- The SVG element will go in here -->
+    <div id="map"></div>
+    <div id="mapLegend"></div>
+    <script>
+    var width = 960,
+        height = 500;
+
+    // A projection is a particular type of scale, that maps
+    // a pair of LONGITUDE, LATITUDE coordinates (NOT the other
+    // way around) to a point in pixel space.
+    var projection = d3.geo.albersUsa();
+    // Look at the documentation https://github.com/mbostock/d3/wiki/Geo-Projections
+    // for different projections and ways to change the
+    // zoom and center of the projection.
+
+    // This function will convert a set of coordinates
+    //  into a <path> attribute.
+    var path = d3.geo.path().projection(projection);
+
+    var svgLoc = d3.select("#map").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+    var g = svgLoc.append("g");
+    var centered;
+
+    var svgMapLegend = d3.select("#mapLegend").append("svg")
+    .attr("width", width/2)
+    .attr("height", 200);
+
+    for (i=0; i<4; i++)
+    {
+    	svgMapLegend.append("circle")
+    	.attr("r", 20)
+    	.attr("cy", 25+200/4*i)
+    	.attr("cx", 25)
+    	.attr("stroke", indexToColor(i))
+    	.attr("fill-opacity", 0.1);
+    }
+    svgMapLegend.append("text")
+    .text('2011')
+    .attr("y", 30)
+    .attr("x", 50);
+    svgMapLegend.append("text")
+    .text('2012')
+    .attr("y", 80)
+    .attr("x", 50);
+    svgMapLegend.append("text")
+    .text('2013')
+    .attr("y", 130)
+    .attr("x", 50);
+    svgMapLegend.append("text")
+    .text('2014')
+    .attr("y", 180)
+    .attr("x", 50);
+
+    svgMapLegend.append("circle")
+    .attr("cx", 300)
+    .attr("cy", 30)
+    .attr("r", scaleRadius(1))
+    .attr("fill_opacity", 0.1)
+    .attr("stroke", "black")
+    .attr("stroke_width", "0.5");
+    svgMapLegend.append("circle")
+    .attr("cx", 300)
+    .attr("cy", 75)
+    .attr("r", scaleRadius(5))
+    .attr("fill_opacity", 0.1)
+    .attr("stroke", "black")
+    .attr("stroke_width", "0.5");
+    svgMapLegend.append("circle")
+    .attr("cx", 300)
+    .attr("cy", 120)
+    .attr("r", scaleRadius(10))
+    .attr("fill_opacity", 0.1)
+    .attr("stroke", "black")
+    .attr("stroke_width", "0.5");
+    svgMapLegend.append("circle")
+    .attr("cx", 300)
+    .attr("cy", 170)
+    .attr("r", scaleRadius(20))
+    .attr("fill_opacity", 0.1)
+    .attr("stroke", "black")
+    .attr("stroke_width", "0.5");
+
+    svgMapLegend.append("text")
+    .text('1 Job')
+    .attr("y", 35)
+    .attr("x", 330);
+    svgMapLegend.append("text")
+    .text('5 Jobs')
+    .attr("y", 80)
+    .attr("x", 330);
+    svgMapLegend.append("text")
+    .text('10 Jobs')
+    .attr("y", 125)
+    .attr("x", 330);
+    svgMapLegend.append("text")
+    .text('20 Jobs')
+    .attr("y", 175)
+    .attr("x", 330);
+
+    var employeeObjects;
+    var fullCityFreq = [];
+    var cityFreq11 = [];
+    var cityFreq12 = [];
+    var cityFreq13 = [];
+    var cityFreq14 = [];
+
+    function scaleRadius(freq)
+    {
+    	var r = Math.sqrt(freq);
+    	return r*5.5;
+    }
+
+    function empTo11(employee) {
+    	if (typeof cityFreq11[employee.City] === 'undefined' )
+    	{
+    		cityFreq11[employee.City] = [1, employee.longitude, employee.latitude];
+    	}
+    	else
+    	{
+    		cityFreq11[employee.City][0] = cityFreq11[employee.City][0]+1;
+    	}
+    }
+
+    function empTo12(employee) {
+    	if (typeof cityFreq12[employee.City] === 'undefined' )
+    	{
+    		cityFreq12[employee.City] = [1, employee.longitude, employee.latitude];
+    	}
+    	else
+    	{
+    		cityFreq12[employee.City][0] = cityFreq12[employee.City][0]+1;
+    	}
+    }
+
+    function empTo13(employee) {
+    	if (typeof cityFreq13[employee.City] === 'undefined' )
+    	{
+    		cityFreq13[employee.City] = [1, employee.longitude, employee.latitude];
+    	}
+    	else
+    	{
+    		cityFreq13[employee.City][0] = cityFreq13[employee.City][0]+1;
+    	}
+    }
+
+    function empTo14(employee) {
+    	if (typeof cityFreq14[employee.City] === 'undefined' )
+    	{
+    		cityFreq14[employee.City] = [1, employee.longitude, employee.latitude];
+    	}
+    	else
+    	{
+    		cityFreq14[employee.City][0] = cityFreq14[employee.City][0]+1;
+    	}
+    }
+    // Get a JSON file containing coordinates of
+    //  countries and landmasses. This is from an
+    //  example provided by Mike Bostock.
+    d3.json("us.json", function(error, us) {
+    	stateObjects = us;
+
+    	// ANY time we do I/O we should check for errors.
+    	if (error) { console.log(error); }
+
+    	// Get an array of coordinate lists for 241
+    	//  geographic entites. This includes sovereign
+    	//  countries as well as territories like Guam.
+    	var states = topojson.feature(us, us.objects.states).features;
+
+    	// convert each country's data into a path element.
+    	states.forEach(function (state) {
+    		g.append("path").attr("d", path(state))
+    		.style("fill", "#ccc")
+    		.style("stroke", "#888");
+    	});
+
+    	// We can attach events to SVG elements.
+    	//  When we map data elements to svg elements,
+    	//  we can then define behaviors without specifying
+    	//  a particular country.
+    	/*g.selectAll("path").data(states)
+    	.on("mouseover", function (state) {
+    		console.log(states.id);
+    	});*/
+
+    	/*This function is from https://bl.ocks.org/mbostock/2206590
+    	We felt it was necessary to help make our map more understandable.*/
+    	g.selectAll("path").data(states)
+    	.on("click", function clicked(d) {
+    		var x, y, k;
+    		if (d && centered !== d) {
+    			var centroid = path.centroid(d);
+    			x = centroid[0];
+    			y = centroid[1];
+    			k = 2.5;
+    			centered = d;
+    		} else {
+    			x = width / 2;
+    			y = height / 2;
+    			k = 1;
+    			centered = null;
+    		}
+
+    		g.selectAll("path")
+    		.classed("active", centered && function(d) { return d === centered; });
+
+    		g.transition()
+    		.duration(750)
+    		.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+    		.style("stroke-width", 1.5 / k + "px");
+    	});
+
+    	d3.json("locations.json", function(error, employee)
+    {
+    	employeeObjects = employee;
+
+    	if (error)
+    	{
+    		console.log(error);
+    	}
+
+
+    	employeeObjects.forEach(function (employee) {
+
+    		if (employee.City != 0 && employee.longitude < -60 && employee.longitude > -170 )
+    		{
+    			if (employee.Year == "2011")
+    			{
+    				empTo11(employee);
+    			}
+    			else if (employee.Year == "2012")
+    			{
+    				empTo12(employee);
+    			}
+    			else if (employee.Year == "2013")
+    			{
+    				empTo13(employee);
+    			}
+    			else if (employee.Year == "2014")
+    			{
+    				empTo14(employee);
+    			}
+
+    			if (typeof fullCityFreq[employee.City] === 'undefined' )
+    			{
+    				fullCityFreq[employee.City] = [1, employee.longitude, employee.latitude];
+    			}
+    			else
+    			{
+    				fullCityFreq[employee.City][0] = fullCityFreq[employee.City][0]+1;
+    			}
+    		}
+
+    	});
+
+
+    	Object.keys(cityFreq11).forEach(function (city) {
+
+    		var cityCoords = projection([cityFreq11[city][1], cityFreq11[city][2]]);
+    		g.append("circle").attr("cx", cityCoords[0])
+    		.attr("cy", cityCoords[1])
+    		.attr("r", scaleRadius(cityFreq11[city][0]))
+    		.attr("fill-opacity", "0.1")
+    		.attr("fill", "red")
+    		.attr("stroke", "red")
+    		.attr("stroke-width", "0.5")
+    		.attr("strok-opacity", "0.1");
+    	});
+
+    	Object.keys(cityFreq12).forEach(function (city) {
+
+    		var cityCoords = projection([cityFreq12[city][1], cityFreq12[city][2]]);
+    		g.append("circle").attr("cx", cityCoords[0])
+    		.attr("cy", cityCoords[1])
+    		.attr("r", scaleRadius(cityFreq12[city][0]))
+    		.attr("fill-opacity", "0.1")
+    		.attr("fill", "purple")
+    		.attr("stroke", "purple")
+    		.attr("stroke-width", "0.5")
+    		.attr("strok-opacity", "0.6");
+    	});
+
+    	Object.keys(cityFreq13).forEach(function (city) {
+
+    		var cityCoords = projection([cityFreq13[city][1], cityFreq13[city][2]]);
+    		g.append("circle").attr("cx", cityCoords[0])
+    		.attr("cy", cityCoords[1])
+    		.attr("r", scaleRadius(cityFreq13[city][0]))
+    		.attr("fill-opacity", "0.1")
+    		.attr("fill", "blue")
+    		.attr("stroke", "blue")
+    		.attr("stroke-width", "0.5")
+    		.attr("strok-opacity", "0.6");
+    	});
+
+    	Object.keys(cityFreq14).forEach(function (city) {
+
+    		var cityCoords = projection([cityFreq14[city][1], cityFreq14[city][2]]);
+    		g.append("circle").attr("cx", cityCoords[0])
+    		.attr("cy", cityCoords[1])
+    		.attr("r", scaleRadius(cityFreq14[city][0]))
+    		.attr("fill-opacity", "0.1")
+    		.attr("fill", "yellow")
+    		.attr("stroke", "yellow")
+    		.attr("stroke-width", "0.5")
+    		.attr("strok-opacity", "0.6");
+    	});
+
+    });
+
+    });
+
+
+
+
+    // The .json() function returns immediately, without
+    //  waiting for the response. But it spins off a separate
+    //  thread that waits for the response to come back, and
+    //  then executes the function that we gave it.
+    console.log("after json");
+    </script>
+
+    <div>
+        <h2>Chart showing Trends in Job Growth, Salary Growth, and Student Travel</h2>
+        <p>Combining the ideas from the other two charts, this clearly shows job growth in each city as well as wage increases in each city. We can also see where the majority of students are going and why that may or may not make sense. For example, San Francisco has seen an increase in jobs and salary which is why many students may choose to go there. It can also be seen the that number of jobs available in the city has little effect on where students choose to go.
+    </div>
+    <!-- the svg element for the circlular city chart will go here -->
+    <div id="circle_mapping"></div>
+    <script>
+
+        // These functions allow us to move svg elements behind or in front of each other
+        // z-index doesn't work for svg elements and the json file read made the ordering of elements unpredictable
+        d3.selection.prototype.moveToFront = function() {
+            return this.each(function(){
+                this.parentNode});
+        };
+        d3.selection.prototype.moveToBack = function() {
+            return this.each(function() {
+                var firstChild = this.parentNode.firstChild;
+                if (firstChild) {
+                    this.parentNode.insertBefore(this, firstChild);
+                }
+            });
+        };
+
+        // height and width of svg container
+        // location of center of svg container
+        var width = 1700,
+            height = 1700,
+            center = height/2
+            R = 600; // radius of circle on which city circles will be placed
+
+        // create svg container
+        var circles_svg = d3.select("#circle_mapping").append("svg")
+            .attr("height",height)
+            .attr("width",width);
+            //.style("border","1px solid black")
+
+        // city circles must land on this circle
+        // to be removed
+        // circles_svg.append("circle")
+        //     .attr("cx",center)
+        //     .attr("cy",center)
+        //     .attr("r",R)
+        //     .attr("fill","none")
+        //     .attr("stroke-width",4)
+        //     .attr("stroke","black");
+
+        //separate svg into 4 quadrants
+        circles_svg.append("line")
+            .attr("x1", center)
+            .attr("y1", height)
+            .attr("x2", center)
+            .attr("y2", 0)
+            .attr("fill", "none")
+            .attr("stroke","black")
+            .attr("stroke-dasharray","5,5");
+        circles_svg.append("line")
+            .attr("x1", 0)
+            .attr("y1", center)
+            .attr("x2", width)
+            .attr("y2", center)
+            .attr("fill", "none")
+            .attr("stroke","black")
+            .attr("stroke-dasharray","5,5");
+        // color the quadrants
+        circles_svg.append("rect")
+            .attr("x",0)
+            .attr("y",0)
+            .attr("height", height/2)
+            .attr("width", width/2)
+            .attr("fill","grey")
+            .attr("opacity",0.2);
+        circles_svg.append("rect")
+            .attr("x",center)
+            .attr("y",0)
+            .attr("height", height/2)
+            .attr("width", width/2)
+            .attr("fill","grey")
+            .attr("opacity",0.2);
+        circles_svg.append("rect")
+            .attr("x",center)
+            .attr("y",center)
+            .attr("height", height/2)
+            .attr("width", width/2)
+            .attr("fill","grey")
+            .attr("opacity",0.2);
+        circles_svg.append("rect")
+            .attr("x",0)
+            .attr("y",center)
+            .attr("height", height/2)
+            .attr("width", width/2)
+            .attr("fill","grey")
+            .attr("opacity",0.2);
+        // create center circle representing cornell
+        circles_svg.append("circle")
+            .attr("cx",center)
+            .attr("cy",center)
+            .attr("r",100)
+            .attr("fill","white")
+            .attr("stroke-width",4)
+            .attr("stroke","red")
+            .moveToFront();
+        circles_svg.append("text")
+            .attr("x",center)
+            .attr("y",center)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("Cornell")
+            .style("font-family","Palatino")
+            .attr("fill","red")
+            .style("font-size",35)
+            .moveToFront();
+        //place years in the circle
+        circles_svg.append("text")
+            .attr("x",center + 40)
+            .attr("y",center - 40)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("2011")
+            .style("font-size",20)
+            .moveToFront();
+        circles_svg.append("text")
+            .attr("x",center - 40)
+            .attr("y",center - 40)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("2014")
+            .style("font-size",20)
+            .moveToFront();
+        circles_svg.append("text")
+            .attr("x",center - 40)
+            .attr("y",center + 40)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("2013")
+            .style("font-size",20)
+            .moveToFront();
+        circles_svg.append("text")
+            .attr("x",center + 40)
+            .attr("y",center + 40)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("2012")
+            .style("font-size",20)
+            .moveToFront();
+
+        // number of jobs per city will be represented by size of circle for the city
+        // set up radius scale
+        var radius_scale = d3.scale.sqrt()
+            .domain([5000, 21000])
+            .range([15,85]);
+
+        // salary will be represented by color
+        // set up color scale in green
+        var salary_scale = d3.scale.linear()
+            .domain([70000,120000])
+            .range(["#b2ffb2","#003300"]);
+
+        // thickness of line connecting Cornell circle to city circles correlates to
+        //percent of students going to that city
+        // set up line scale
+        var line_scale = d3.scale.linear()
+            .domain([0,0.35])
+            .range([0,35]);
+
+        // classes will be assigned to each city's circle
+        var city_classes = {
+            "San Francisco":"sf",
+            "NYC": "nyc",
+            "Boston":"boston",
+            "Seattle":"seattle",
+            "Atlanta":"atlanta",
+            "Chicago":"chicago"
+        };
+
+        var data, // data will contain the json data
+            offset, // offset is the angle at which the city circles begin to form
+            x = [], // an array of x positions of the city circles
+            y = []; // an array of y positions of the city circles
+
+        // read data from json file and manipulate it
+        d3.json("cityData.json", function (error, city_data){
+
+            if (error) {console.log(error);}
+
+            // set data equal to the json data
+            data = city_data;
+
+            // create a circle for each city
+            // radius correlates to number of jobs available
+            // color correlates to median salary
+            data.forEach(function(city, index){
+                circles_svg.append("circle")
+                    .attr("r",radius_scale(city.jobs))
+                    .attr("id", "d" + index)
+                    .attr("class",city_classes[city.city])
+                    .attr("fill", salary_scale(city.median_salary))
+                    .attr("stroke","black")
+                    .attr("stroke-width",3);
+            }); // end forEach
+
+            // offset allows you to orient the circles properly
+            // i.e. have all the 2011 circles be in the 2011 quadrant and so on
+            // 187 orients the circles so that the years increase in a clockwise direction
+            // starting with 2011 in the top right
+            offset = 187; // degrees
+
+            // loop through each city circle
+            for (var n = 0; n < 24; n++){
+                // the index of the array corresponds to the id of the circle
+                // this sets the location x and y location of circle #dn
+                x[n] = Math.sin((offset + 15*n) * (Math.PI/180)) * R + center;
+                y[n] = Math.cos((offset + 15*n) * (Math.PI/180)) * R + center;
+                // move the circle to its appropriate location
+                d3.select("#d"+n)
+                    .attr("cx",x[n])
+                    .attr("cy",y[n])
+                    .moveToBack();
+                // label each circle with the appropriate city name
+                circles_svg.append("text")
+                    .attr("x",x[n])
+                    .attr("y",y[n])
+                    .attr("text-anchor","middle")
+                    .attr("alignment-baseline","middle")
+                    .text("" + data[n]["city"] + "")
+                    .style("font-size",30)
+                    .style("fill","red")
+                    .attr("stroke","#000000")
+                    .style("stroke-width","0.5px");
+                // add a line connecting cornell to the city
+                // line represents number of people going to city
+                circles_svg.append("line")
+                    .attr("x1",center)
+                    .attr("y1",center)
+                    .attr("x2",x[n])
+                    .attr("y2",y[n])
+                    .attr("fill","none")
+                    .attr("stroke",salary_scale(data[n]["median_salary"]))
+                    .attr("stroke-width",line_scale(data[n]["percent_students_going"]))
+                    .attr("stroke-linecap","round")
+                    .attr("class","line")
+                    .moveToBack();
+
+            } // end for
+
+        }); // end d3.json
+
+        // create legends for each scale
+        // size of circle legend
+        circles_svg.append("text")
+            .attr("x",105)
+            .attr("y",25)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("Number of Jobs per City");
+        circles_svg.append("circle")
+            .attr("cx",40)
+            .attr("cy",100)
+            .attr("r",radius_scale(5000))
+            .attr("fill","green");
+        circles_svg.append("text")
+            .attr("x",40)
+            .attr("y",100)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("5000");
+        circles_svg.append("circle")
+            .attr("cx",110)
+            .attr("cy",100)
+            .attr("r",radius_scale(10000))
+            .attr("fill","green");
+        circles_svg.append("text")
+            .attr("x",110)
+            .attr("y",100)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("10000");
+        circles_svg.append("circle")
+            .attr("cx",220)
+            .attr("cy",100)
+            .attr("r",radius_scale(15000))
+            .attr("fill","green");
+        circles_svg.append("text")
+            .attr("x",220)
+            .attr("y",100)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("15000");
+
+        // salary legend
+        circles_svg.append("text")
+            .attr("x",105)
+            .attr("y",180)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("Median Salary per City");
+        circles_svg.append("rect")
+            .attr("x",30)
+            .attr("y",200)
+            .attr("height",40)
+            .attr("width",60)
+            .style("fill",salary_scale(70000))
+            .moveToBack();
+        circles_svg.append("rect")
+            .attr("x",90)
+            .attr("y",200)
+            .attr("height",40)
+            .attr("width",60)
+            .style("fill",salary_scale(90000))
+            .moveToBack();
+        circles_svg.append("rect")
+            .attr("x",150)
+            .attr("y",200)
+            .attr("height",40)
+            .attr("width",60)
+            .style("fill",salary_scale(115000))
+            .moveToBack();
+            circles_svg.append("text")
+            .attr("x",55)
+            .attr("y",260)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("$70,000");
+        circles_svg.append("text")
+            .attr("x",120)
+            .attr("y",260)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("$90,000");
+        circles_svg.append("text")
+            .attr("x",190)
+            .attr("y",260)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("$115,000");
+
+        // percentage of students working in city legend
+        circles_svg.append("text")
+            .attr("x",185)
+            .attr("y",300)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("Percentage of Graduates going to Each City");
+        circles_svg.append("line")
+            .attr("x1",40)
+            .attr("y1",340)
+            .attr("x2",300)
+            .attr("y2",340)
+            .attr("fill","none")
+            .attr("stroke","green")
+            .attr("stroke-width",line_scale(0.05));
+        circles_svg.append("text")
+            .attr("x",175)
+            .attr("y",360)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("0.05%");
+        circles_svg.append("line")
+            .attr("x1",40)
+            .attr("y1",390)
+            .attr("x2",300)
+            .attr("y2",390)
+            .attr("fill","none")
+            .attr("stroke","green")
+            .attr("stroke-width",line_scale(0.15));
+        circles_svg.append("text")
+            .attr("x",175)
+            .attr("y",415)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("0.15%");
+        circles_svg.append("line")
+            .attr("x1",40)
+            .attr("y1",440)
+            .attr("x2",300)
+            .attr("y2",440)
+            .attr("fill","none")
+            .attr("stroke","green")
+            .attr("stroke-width",line_scale(0.25));
+        circles_svg.append("text")
+            .attr("x",175)
+            .attr("y",470)
+            .attr("text-anchor","middle")
+            .attr("alignment-baseline","middle")
+            .text("0.25%");
+
+    </script>
+
+</body>
+</html>

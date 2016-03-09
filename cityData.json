@@ -147,7 +147,7 @@
     "city": "San Francisco",
     "jobs": 4440,
     "mean_salary": 97630,
-    "median_salary": 65000,
+    "median_salary": 93000,
     "percent_students_going": 0.27,
     "year": 2011
   },
@@ -187,7 +187,7 @@
     "city": "Seattle",
     "jobs": 9290,
     "mean_salary": "76650 - 114910",
-    "median_salary": 65000,
+    "median_salary": 90000,
     "percent_students_going": 0.09,
     "year": 2011
   }
